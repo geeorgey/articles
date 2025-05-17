@@ -1,0 +1,200 @@
+/* App.css */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --card-background: #fff;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --header-height: 60px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* プロフィールセクション */
+.profile-section {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: var(--card-shadow);
+}
+
+.profile-content h1 {
+  margin-top: 0;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.profile-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+.profile-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ecf0f1;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* プレゼンテーションセクション */
+.presentations-section h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 10px;
+}
+
+.presentations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.presentation-card {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.presentation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.presentation-card h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.presentation-date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.presentation-description {
+  margin-bottom: 20px;
+}
+
+.view-button {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #2980b9;
+}
+
+/* テーマ別カードスタイル */
+.future-tech {
+  border-left: 5px solid #3498db;
+}
+
+.nature-theme {
+  border-left: 5px solid #27ae60;
+}
+
+.business-theme {
+  border-left: 5px solid #f39c12;
+}
+
+.creative-theme {
+  border-left: 5px solid #9b59b6;
+}
+
+/* フッター */
+footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  text-align: center;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 15px;
+  }
+  
+  .profile-section {
+    padding: 25px;
+  }
+  
+  .profile-content h1 {
+    font-size: 2rem;
+  }
+  
+  .presentations-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* プレゼンテーションページ用スタイル */
+.presentation-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
