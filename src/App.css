@@ -1,12 +1,15 @@
 /* App.css */
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
-  --background-color: #f5f5f5;
-  --text-color: #333;
-  --card-background: #fff;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --primary-color: #6e44ff;
+  --secondary-color: #00d4ff;
+  --accent-color: #ff00aa;
+  --background-color: #0a0a1a;
+  --card-background: #1a1a2e;
+  --text-color: #f0f0f0;
+  --card-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+  --gradient-bg: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
   --header-height: 60px;
+  --glow-effect: 0 0 10px rgba(110, 68, 255, 0.5);
 }
 
 body {
@@ -14,181 +17,296 @@ body {
   padding: 0;
   font-family: 'Noto Sans JP', 'Segoe UI', Roboto, sans-serif;
   background-color: var(--background-color);
+  background-image: var(--gradient-bg);
   color: var(--text-color);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 /* プロフィールセクション */
 .profile-section {
-  background-color: var(--primary-color);
-  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  background-color: var(--card-background);
+  border-radius: 16px;
   padding: 40px;
-  border-radius: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
 }
 
-.profile-content h1 {
-  margin-top: 0;
+.profile-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+}
+
+.profile-image-container {
+  flex-shrink: 0;
+}
+
+.profile-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--secondary-color);
+  box-shadow: var(--glow-effect);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(110, 68, 255, 0.7);
+}
+
+.profile-content {
+  flex-grow: 1;
+}
+
+.profile-name {
   font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: white;
+  margin: 0 0 20px 0;
+  background: linear-gradient(90deg, var(--text-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
-.profile-info h2 {
-  font-size: 1.8rem;
+.profile-affiliations {
+  margin-bottom: 30px;
+}
+
+.affiliation {
   margin-bottom: 15px;
+}
+
+.affiliation h3 {
+  font-size: 1.3rem;
+  margin: 0 0 5px 0;
   color: var(--secondary-color);
 }
 
-.profile-info p {
+.affiliation p {
   font-size: 1.1rem;
-  margin-bottom: 15px;
-  line-height: 1.7;
-}
-
-.profile-title {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #ecf0f1;
+  margin: 0;
+  opacity: 0.9;
 }
 
 .social-links {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
-.social-links a {
-  display: inline-block;
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 4px;
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 30px;
   text-decoration: none;
+  color: var(--text-color);
   font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.social-links a:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(110, 68, 255, 0.8), rgba(0, 212, 255, 0.8));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--glow-effect);
+}
+
+.social-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.x-link::before {
+  background: linear-gradient(135deg, #000000, #333333);
+}
+
+.fb-link::before {
+  background: linear-gradient(135deg, #1877f2, #3b5998);
+}
+
+.li-link::before {
+  background: linear-gradient(135deg, #0077b5, #0a66c2);
 }
 
 /* プレゼンテーションセクション */
 .presentations-section h2 {
   font-size: 2rem;
-  margin-bottom: 25px;
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--secondary-color);
+  margin-bottom: 30px;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 10px;
+  position: relative;
+}
+
+.presentations-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background-color: var(--secondary-color);
 }
 
 .presentations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
 }
 
 .presentation-card {
   background-color: var(--card-background);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 25px;
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
 }
 
 .presentation-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
 }
 
 .presentation-card h3 {
   font-size: 1.5rem;
   margin-top: 0;
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .presentation-date {
-  color: #666;
+  color: var(--secondary-color);
   font-size: 0.9rem;
   margin-bottom: 15px;
 }
 
 .presentation-description {
   margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 .view-button {
   display: inline-block;
-  background-color: var(--secondary-color);
-  color: white;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .view-button:hover {
-  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: var(--glow-effect);
 }
 
 /* テーマ別カードスタイル */
 .future-tech {
-  border-left: 5px solid #3498db;
+  border-left: none;
 }
 
-.nature-theme {
-  border-left: 5px solid #27ae60;
+.future-tech::before {
+  background: linear-gradient(to bottom, #6e44ff, #00d4ff);
 }
 
-.business-theme {
-  border-left: 5px solid #f39c12;
+.nature-theme::before {
+  background: linear-gradient(to bottom, #27ae60, #2ecc71);
 }
 
-.creative-theme {
-  border-left: 5px solid #9b59b6;
+.business-theme::before {
+  background: linear-gradient(to bottom, #f39c12, #f1c40f);
+}
+
+.creative-theme::before {
+  background: linear-gradient(to bottom, #9b59b6, #8e44ad);
 }
 
 /* フッター */
 footer {
-  margin-top: 60px;
+  margin-top: 80px;
   padding: 20px 0;
   text-align: center;
-  color: #666;
-  border-top: 1px solid #ddd;
+  color: var(--text-color);
+  opacity: 0.7;
+  border-top: 1px solid rgba(110, 68, 255, 0.3);
 }
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
   .home-container {
-    padding: 15px;
+    padding: 20px 15px;
   }
   
   .profile-section {
-    padding: 25px;
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
   }
   
-  .profile-content h1 {
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-name {
     font-size: 2rem;
+  }
+  
+  .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
   }
   
   .presentations-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .social-links {
-    flex-direction: column;
-    gap: 10px;
   }
 }
 

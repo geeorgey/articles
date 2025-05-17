@@ -8,25 +8,44 @@ function HomePage({ presentations }) {
 
   return (
     <div className={`home-container ${currentTheme}`}>
-      <header className="profile-section">
+      <div className="profile-section">
+        <div className="profile-image-container">
+          <img 
+            src="https://lne.st/wp-content/uploads/2025/05/78626087_10221322607716697_5436811581734256640_n-9.jpg" 
+            alt="吉田丈治" 
+            className="profile-image"
+          />
+        </div>
         <div className="profile-content">
-          <h1>プレゼンテーションギャラリー</h1>
-          <div className="profile-info">
-            <h2>吉田丈治</h2>
-            <p className="profile-title">
-              株式会社リバネス 取締役CIO<br />
-              株式会社リバネスナレッジ 代表取締役社長
-            </p>
-            <div className="social-links">
-              <a href="https://x.com/geeorgey" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
-              <a href="https://Facebook.com/GeorgeYoshida" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://linkedin.com/in/geeorgey" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://note.com/geeorgey" target="_blank" rel="noopener noreferrer">note</a>
-              <a href="https://lne.st/k" target="_blank" rel="noopener noreferrer">プレゼン資料まとめ</a>
+          <h1 className="profile-name">吉田丈治 / YOSHIDA George</h1>
+          
+          <div className="profile-affiliations">
+            <div className="affiliation">
+              <h3>株式会社リバネス</h3>
+              <p>取締役CIO</p>
+            </div>
+            <div className="affiliation">
+              <h3>株式会社リバネスナレッジ</h3>
+              <p>代表取締役社長</p>
             </div>
           </div>
+          
+          <div className="social-links">
+            <a href="https://x.com/geeorgey" target="_blank" rel="noopener noreferrer" className="social-link x-link">
+              <span className="social-icon">𝕏</span>
+              <span className="social-name">X</span>
+            </a>
+            <a href="https://www.facebook.com/GeorgeYoshida/" target="_blank" rel="noopener noreferrer" className="social-link fb-link">
+              <span className="social-icon">f</span>
+              <span className="social-name">Facebook</span>
+            </a>
+            <a href="https://www.linkedin.com/in/geeorgey/" target="_blank" rel="noopener noreferrer" className="social-link li-link">
+              <span className="social-icon">in</span>
+              <span className="social-name">LinkedIn</span>
+            </a>
+          </div>
         </div>
-      </header>
+      </div>
 
       <section className="presentations-section">
         <h2>プレゼンテーション一覧</h2>
@@ -45,7 +64,7 @@ function HomePage({ presentations }) {
       </section>
 
       <footer>
-        <p>&copy; 2025 吉田丈治 プレゼンテーションギャラリー</p>
+        <p>&copy; 2025 吉田丈治</p>
       </footer>
     </div>
   );
