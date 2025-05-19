@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リバネスグループにおけるDX実例2025 | Salesforce Innovation Day 大阪</title>
+  <meta name="description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta name="keywords" content="リバネス, Salesforce, DX, デジタルトランスフォーメーション, CRM, クラウド">
+  <meta name="author" content="吉田丈治">
+  
+  <!-- OGP設定 -->
+  <meta property="og:title" content="リバネスグループにおけるDX実例2025">
+  <meta property="og:description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  <meta property="og:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
+  <meta property="og:site_name" content="プレゼンテーションアーカイブ">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@geeorgey">
+  <meta name="twitter:title" content="リバネスグループにおけるDX実例2025">
+  <meta name="twitter:description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta name="twitter:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/dx-case-2025.css">
+  <link rel="stylesheet" href="styles/timeline.css">
+  
+  <style>
+    :root {
+      --primary-color: #0070c0;
+      --secondary-color: #ff0000;
+      --background-color: #e6f2f8;
+      --text-color: #333333;
+      --accent-color: #00a0e9;
+    }
+    
+    /* 基本スタイル */
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    /* スライドコンテナ */
+    .slides-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+    
+    /* 個別スライド */
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      padding: 2rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    
+    .slide.active {
+      display: flex !important;
+    }
+    
+    /* タイトルスライド */
+    .title-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .title-slide h1 {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .title-slide h2 {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+    }
+    
+    .title-slide .event-info {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .title-slide .presenter-info {
+      font-size: 1.2rem;
+    }
+    
+    /* プロフィールスライド */
+    .profile-slide h1 {
+      font-size: 3rem;
+      color: var(--accent-color);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    /* タイムラインスライド */
+    .timeline-slide h1 {
+      font-size: 3rem;
+      color: var(--accent-color);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    /* 裏表紙スライド */
+    .back-cover-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .back-cover-slide h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+    
+    .back-cover-slide .presenter-info {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .back-cover-slide .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .back-cover-slide .social-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    
+    .back-cover-slide .social-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* ナビゲーションコントロール - 右下に集約しhover時のみ表示 */
+    .nav-controls {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+    
+    .nav-controls:hover {
+      opacity: 1;
+    }
+    
+    .nav-button {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    
+    .nav-button:hover {
+      background-color: var(--primary-color);
+    }
+    
+    .nav-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    /* ホームボタンを左側に移動 */
+    .home-button {
+      position: fixed;
+      bottom: 2rem;
+      right: 14rem;
+      z-index: 100;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+    
+    .home-button:hover {
+      opacity: 1;
+    }
+    
+    .home-button a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .home-button a:hover {
+      background-color: #cc0000;
+    }
+    
+    /* ロゴ */
+    .logo {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      height: 3rem;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+    <!-- スライド1: 表紙 -->
+    <div class="slide title-slide" id="slide-1">
+      <h1>リバネスグループにおける<br>DX実例2025</h1>
+      <h2>Salesforce各製品の導入と活用</h2>
+      <div class="event-info">
+        2025年5月22日 Salesforce Innovation Day 大阪<br>
+        DX推進企業の集い
+      </div>
+      <div class="presenter-info">
+        吉田丈治 / YOSHIDA George<br>
+        株式会社リバネス 取締役CIO<br>
+        株式会社リバネスナレッジ 代表取締役社長
+      </div>
+    </div>
+    
+    <!-- スライド2: 自己紹介 -->
+    <div class="slide profile-slide" id="slide-2">
+      <h1>自己紹介</h1>
+      <div class="profile-content">
+        <div class="profile-info">
+          <h2>吉田丈治 / YOSHIDA George</h2>
+          <p class="company-info">株式会社リバネス 取締役CIO</p>
+          <p class="company-info">株式会社リバネスナレッジ 代表取締役社長</p>
+          
+          <h3>経歴</h3>
+          <div class="history-item">
+            <span class="year">2002年</span>リバネス創業時に参画
+          </div>
+          <div class="history-item">
+            <span class="year">2014年</span>Sales Cloud 導入を機にCIOに就任
+          </div>
+          <div class="history-item">
+            <span class="year">2015年</span>Slack導入
+          </div>
+          <div class="history-item">
+            <span class="year">2019年</span>日本人として初めてSalesforce主催の世界イベントDreamforceにて基調講演プロダクトキーノート（AIテーマ）で講演
+          </div>
+        </div>
+        <div class="profile-image">
+          <figure>
+            <img src="images/dreamforce-keynote.jpg" alt="Dreamforce 2019 Einstein Keynoteでの登壇の様子">
+            <figcaption>Dreamforce 2019 Einstein Keynote</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    
+    <!-- スライド3: SaaS導入履歴 -->
+    <div class="slide timeline-slide" id="slide-3">
+      <h1>SaaS導入履歴</h1>
+      <div class="timeline-container" id="timeline-container">
+        <!-- タイムラインはJavaScriptで動的に生成 -->
+      </div>
+    </div>
+    
+    <!-- スライド4: 裏表紙 -->
+    <div class="slide back-cover-slide" id="slide-4">
+      <h1>ご清聴ありがとうございました</h1>
+      <div class="presenter-info">
+        吉田丈治 / YOSHIDA George<br>
+        株式会社リバネス 取締役CIO<br>
+        株式会社リバネスナレッジ 代表取締役社長
+      </div>
+      <div class="social-links">
+        <a href="https://x.com/geeorgey" target="_blank" rel="noopener noreferrer" class="social-link">X: @geeorgey</a>
+        <a href="https://www.linkedin.com/in/geeorgey/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn: geeorgey</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ナビゲーションコントロール -->
+  <div class="nav-controls">
+    <button class="nav-button prev-button" id="prev-button">←</button>
+    <button class="nav-button next-button" id="next-button">→</button>
+  </div>
+  
+  <!-- ホームボタン -->
+  <div class="home-button">
+    <a href="../index.html" title="トップページに戻る">↩</a>
+  </div>
+  
+  <!-- ロゴ -->
+  <img src="images/leaveanest_logo.png" alt="株式会社リバネスのロゴ" class="logo">
+  
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // スライド要素を取得
+      const slides = document.querySelectorAll('.slide');
+      let currentSlide = 0;
+      
+      // URLからページパラメータを取得する関数
+      function getPageFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = parseInt(urlParams.get('page'));
+        // パラメータが存在し、有効な数値で、スライド範囲内の場合
+        if (page && !isNaN(page) && page > 0 && page <= slides.length) {
+          return page - 1; // 0ベースのインデックスに変換
+        }
+        return 0; // デフォルトは最初のスライド
+      }
+      
+      // URLを更新する関数
+      function updateURL(slideIndex) {
+        const newURL = `${window.location.pathname}?page=${slideIndex + 1}`;
+        window.history.pushState({ slideIndex: slideIndex }, '', newURL);
+      }
+      
+      // スライドを表示する関数
+      function showSlide(index) {
+        // 範囲外の場合は調整
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        
+        // すべてのスライドを非表示（重要: 確実に非表示にする）
+        slides.forEach(slide => {
+          slide.style.display = 'none';
+          slide.classList.remove('active');
+        });
+        
+        // 少し遅延させて新しいスライドを表示（表示の競合を防止）
+        setTimeout(() => {
+          // 新しいスライドを表示
+          currentSlide = index;
+          slides[currentSlide].style.display = 'flex';
+          slides[currentSlide].classList.add('active');
+          
+          // URLを更新
+          updateURL(currentSlide);
+          
+          // ナビゲーションボタンの状態を更新
+          document.getElementById('prev-button').disabled = currentSlide === 0;
+          document.getElementById('next-button').disabled = currentSlide === slides.length - 1;
+          
+          console.log('現在表示中のスライド:', currentSlide + 1);
+          
+          // タイムラインスライドの場合、タイムラインを描画
+          if (currentSlide === 2) {
+            loadTimelineData();
+          }
+        }, 50);
+      }
+      
+      // 前のスライドに移動
+      document.getElementById('prev-button').addEventListener('click', function() {
+        showSlide(currentSlide - 1);
+      });
+      
+      // 次のスライドに移動
+      document.getElementById('next-button').addEventListener('click', function() {
+        showSlide(currentSlide + 1);
+      });
+      
+      // キーボードナビゲーション
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          showSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+          showSlide(currentSlide + 1);
+        }
+      });
+      
+      // ブラウザの戻る/進むボタンでのナビゲーション
+      window.addEventListener('popstate', function(event) {
+        if (event.state && typeof event.state.slideIndex !== 'undefined') {
+          showSlide(event.state.slideIndex);
+        } else {
+          showSlide(getPageFromURL());
+        }
+      });
+      
+      // タイムラインデータの読み込みと表示
+      async function loadTimelineData() {
+        try {
+          // タイムラインコンテナをクリア
+          const timelineContainer = document.getElementById('timeline-container');
+          if (!timelineContainer) return;
+          
+          timelineContainer.innerHTML = '';
+          
+          // GitHub Pages環境ではfetchを使用
+          if (window.location.protocol.includes('http')) {
+            const response = await fetch('data/timeline-data.json');
+            const data = await response.json();
+            renderTimeline(data);
+          } else {
+            // ローカル環境では埋め込みデータを使用
+            const timelineData = {
+              "title": "SaaS導入履歴",
+              "periods": [
+                {
+                  "name": "IT化",
+                  "start": 2013,
+                  "end": 2014,
+                  "description": "Google Workspaceを使って、メール、カレンダーといった基盤を作り、スライド、ドキュメント、スプレッドシートを使ってデータを蓄積、共有をしてきた時代。"
+                },
+                {
+                  "name": "構造データ化",
+                  "start": 2014,
+                  "end": 2018,
+                  "description": "Salesforceの導入を始め、データの構造化と活用を進めた時期。"
+                },
+                {
+                  "name": "AI黎明期/BI活用",
+                  "start": 2018,
+                  "end": 2023,
+                  "description": "Sales Cloud EinsteinやAccount Engagement Advanceなど、AIを活用したツールの導入期。"
+                },
+                {
+                  "name": "生成AI革命",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "ChatGPT Enterpriseの導入やAgentforceの活用など、生成AIを本格的に活用する時代。"
+                }
+              ],
+              "tools": [
+                {
+                  "name": "Sales Cloud",
+                  "start": 2014,
+                  "end": 2017,
+                  "description": "顧客管理、営業管理の基盤として導入"
+                },
+                {
+                  "name": "Sales Cloud Einstein",
+                  "start": 2018,
+                  "end": 2023,
+                  "description": "AI機能を活用した営業支援ツールにアップグレード"
+                },
+                {
+                  "name": "Einstein 1 Platform (E1)",
+                  "start": 2024,
+                  "end": 2025,
+                  "description": "生成AI活用のためのプラットフォームにアップグレード"
+                },
+                {
+                  "name": "Pardot Standard",
+                  "start": 2014,
+                  "end": 2018,
+                  "description": "マーケティングオートメーションツールとして導入"
+                },
+                {
+                  "name": "Account Engagement Advance(Einstein)",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "AI機能を活用したマーケティングツールにアップグレード"
+                },
+                {
+                  "name": "Slack",
+                  "start": 2015,
+                  "end": 2019,
+                  "description": "社内コミュニケーションツールとして導入"
+                },
+                {
+                  "name": "Enterprise Grid",
+                  "start": 2020,
+                  "end": 2023,
+                  "description": "社外メンバーとの連携強化のためにアップグレード"
+                },
+                {
+                  "name": "Slack AI",
+                  "start": 2024,
+                  "end": 2025,
+                  "description": "生成AI機能を活用したコミュニケーション強化"
+                },
+                {
+                  "name": "Experience Cloud",
+                  "start": 2017,
+                  "end": 2018,
+                  "description": "会員管理用のポータルサイトとして導入"
+                },
+                {
+                  "name": "Heroku",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "会員サイトをHerokuに移行し、Heroku Connectで連携"
+                },
+                {
+                  "name": "Quip",
+                  "start": 2018,
+                  "end": 2025,
+                  "description": "ドキュメント管理ツールとして導入"
+                },
+                {
+                  "name": "CRM Analytics",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "データ分析ツールとして導入"
+                },
+                {
+                  "name": "Tableau",
+                  "start": 2020,
+                  "end": 2025,
+                  "description": "高度なデータ可視化ツールとして導入"
+                },
+                {
+                  "name": "Advertising Studio",
+                  "start": 2018,
+                  "end": 2020,
+                  "description": "広告配信管理ツールとして導入"
+                },
+                {
+                  "name": "myTrailhead",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "社内教育プラットフォームとして導入"
+                },
+                {
+                  "name": "Snowflake",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "データウェアハウスとして導入"
+                },
+                {
+                  "name": "DataCloud",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "データ統合プラットフォームとして導入"
+                },
+                {
+                  "name": "ChatGPT Enterprise",
+                  "start": 2025,
+                  "end": 2025,
+                  "description": "全社的な生成AI活用のために導入"
+                }
+              ]
+            };
+            renderTimeline(timelineData);
+          }
+        } catch (error) {
+          console.error('タイムラインデータの読み込みに失敗しました:', error);
+          document.getElementById('timeline-container').innerHTML = '<p>タイムラインデータの読み込みに失敗しました。</p>';
+        }
+      }
+      
+      function renderTimeline(data) {
+        // 年の範囲を決定
+        const startYear = 2013;
+        const endYear = 2025;
+        const years = endYear - startYear + 1;
+        
+        // タイムラインコンテナを取得
+        const timelineContainer = document.getElementById('timeline-container');
+        timelineContainer.innerHTML = '';
+        
+        // 期間バーを作成
+        const periodsContainer = document.createElement('div');
+        periodsContainer.className = 'timeline-periods';
+        
+        // 年ラベルを作成
+        const yearsContainer = document.createElement('div');
+        yearsContainer.className = 'timeline-years';
+        
+        // 年ラベルを追加
+        for (let year = startYear; year <= endYear; year++) {
+          const yearLabel = document.createElement('div');
+          yearLabel.className = 'timeline-year';
+          yearLabel.textContent = year + '年';
+          yearsContainer.appendChild(yearLabel);
+        }
+        
+        // 期間バーを追加
+        data.periods.forEach(period => {
+          const periodBar = document.createElement('div');
+          periodBar.className = 'timeline-period';
+          periodBar.style.gridColumn = `${period.start - startYear + 1} / ${period.end - startYear + 2}`;
+          
+          const periodName = document.createElement('div');
+          periodName.className = 'period-name';
+          periodName.textContent = period.name;
+          
+          const periodTooltip = document.createElement('div');
+          periodTooltip.className = 'period-tooltip';
+          periodTooltip.textContent = period.description;
+          
+          periodBar.appendChild(periodName);
+          periodBar.appendChild(periodTooltip);
+          periodsContainer.appendChild(periodBar);
+        });
+        
+        // ツールバーコンテナを作成
+        const toolsContainer = document.createElement('div');
+        toolsContainer.className = 'timeline-tools';
+        
+        // ツールバーを追加（重複しないように整理）
+        const toolsByName = {};
+        data.tools.forEach(tool => {
+          toolsByName[tool.name] = tool;
+        });
+        
+        Object.values(toolsByName).forEach(tool => {
+          const toolBar = document.createElement('div');
+          toolBar.className = 'timeline-tool';
+          toolBar.style.gridColumn = `${tool.start - startYear + 1} / ${tool.end - startYear + 2}`;
+          
+          const toolName = document.createElement('div');
+          toolName.className = 'tool-name';
+          toolName.textContent = tool.name;
+          
+          const toolTooltip = document.createElement('div');
+          toolTooltip.className = 'tool-tooltip';
+          toolTooltip.textContent = tool.description;
+          
+          toolBar.appendChild(toolName);
+          toolBar.appendChild(toolTooltip);
+          toolsContainer.appendChild(toolBar);
+        });
+        
+        // タイムラインに要素を追加
+        timelineContainer.appendChild(periodsContainer);
+        timelineContainer.appendChild(yearsContainer);
+        timelineContainer.appendChild(toolsContainer);
+      }
+      
+      // 初期化処理
+      function initializeSlides() {
+        // URLからページ番号を取得
+        const initialSlide = getPageFromURL();
+        
+        // 初期状態ですべてのスライドを確実に非表示
+        slides.forEach((slide, index) => {
+          slide.style.display = 'none';
+          slide.classList.remove('active');
+        });
+        
+        // 少し遅延させてから初期スライドを表示（DOM完全ロード後）
+        setTimeout(() => {
+          showSlide(initialSlide);
+        }, 100);
+      }
+      
+      // 初期化を実行
+      initializeSlides();
+    });
+  </script>
+</body>
+</html>
