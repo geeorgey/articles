@@ -1,0 +1,46 @@
+---
+# 画像メタデータファイル
+# LLMがプレゼンテーション作成時に参照するための画像情報
+
+images:
+  - id: leaveanest_logo
+    filename: leaveanest_logo.png
+    path: /images/leaveanest_logo.png
+    title: 株式会社リバネスのロゴ
+    description: 株式会社リバネスの公式ロゴ画像
+    type: logo
+    organization: 株式会社リバネス
+    source_url: https://lne.st/wp-content/uploads/2022/04/LeaveaNest_logo_header.png
+    usage: 会社紹介、プレゼンテーションのクレジット表示など
+    
+  - id: lnest_knowledge_logo
+    filename: lnest_knowledge_logo.png
+    path: /images/lnest_knowledge_logo.png
+    title: 株式会社リバネスナレッジのロゴ
+    description: 株式会社リバネスナレッジの公式ロゴ画像
+    type: logo
+    organization: 株式会社リバネスナレッジ
+    source_url: https://k.lne.st/wp-content/uploads/sites/76/2022/08/lnest_knowledge-.png
+    usage: 会社紹介、プレゼンテーションのクレジット表示など
+    
+  - id: dreamforce_2019
+    filename: dreamforce_2019.png
+    path: /images/dreamforce_2019.png
+    title: 2019年Dreamforce登壇時の画像
+    description: 吉田丈治氏が2019年のDreamforceカンファレンスで登壇した際の写真
+    type: photo
+    event: Dreamforce 2019
+    person: 吉田丈治
+    year: 2019
+    source_url: https://lne.st/wp-content/uploads/2025/05/7e97b4dac4bfd3718fa55f612fcbce1c.png
+    usage: 講演実績、プロフィール紹介など
+    
+  - id: yoshida_profile
+    filename: yoshida_profile.jpg
+    path: /images/yoshida_profile.jpg
+    title: 吉田丈治のプロフィール画像
+    description: 吉田丈治氏の公式プロフィール写真
+    type: profile
+    person: 吉田丈治
+    source_url: https://lne.st/wp-content/uploads/2025/05/78626087_10221322607716697_5436811581734256640_n-9.jpg
+    usage: プロフィールページ、自己紹介、講演者紹介など
