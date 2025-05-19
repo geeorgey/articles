@@ -73,80 +73,90 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 3rem;
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .profile-slide h1 {
   color: var(--salesforce-blue);
-  font-size: 3.75rem; /* 1.5倍に拡大 */
+  font-size: 2.5rem; /* サイズ調整 */
   border-bottom: 4px solid var(--leaveanest-red);
   padding-bottom: 0.5rem;
   align-self: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .profile-content {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center; /* 中央揃えに変更 */
+  height: calc(100% - 5rem); /* ヘッダー分を除いた高さ */
 }
 
 .profile-info {
   flex: 1;
+  overflow-y: auto; /* 必要に応じてスクロール */
+  padding-right: 1rem;
+  max-height: 100%;
 }
 
 .profile-info h2 {
-  font-size: 3rem; /* 1.5倍に拡大 */
-  margin-bottom: 1.5rem;
+  font-size: 2rem; /* サイズ調整 */
+  margin-bottom: 1rem;
 }
 
 .profile-info .company {
   color: var(--leaveanest-red);
-  font-size: 2.25rem; /* 1.5倍に拡大 */
-  margin-bottom: 0.75rem;
+  font-size: 1.5rem; /* サイズ調整 */
+  margin-bottom: 0.5rem;
 }
 
 .profile-info .position {
-  font-size: 2.25rem; /* 1.5倍に拡大 */
-  margin-bottom: 3rem;
+  font-size: 1.5rem; /* サイズ調整 */
+  margin-bottom: 1.5rem;
 }
 
 .profile-info h3 {
-  font-size: 2.625rem; /* 1.5倍に拡大 */
-  margin-bottom: 1.5rem;
+  font-size: 1.75rem; /* サイズ調整 */
+  margin-bottom: 1rem;
   color: var(--text-dark);
 }
 
 .profile-info .history-item {
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .profile-info .year {
   color: var(--salesforce-blue);
-  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-size: 1.5rem; /* サイズ調整 */
   font-weight: bold;
-  width: 6rem;
+  width: 5rem;
   flex-shrink: 0;
 }
 
 .profile-info .description {
-  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-size: 1.5rem; /* サイズ調整 */
 }
 
 .profile-image {
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: center; /* 上下中央揃え */
   align-items: center;
+  height: 100%;
+  position: relative;
 }
 
 .profile-image img {
   max-width: 100%;
-  max-height: 500px;
+  max-height: 80%; /* 高さ制限 */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: contain; /* アスペクト比を維持 */
 }
 
 .profile-image .image-caption {
@@ -156,9 +166,9 @@ body {
   right: 0;
   background-color: var(--salesforce-blue);
   color: var(--text-light);
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-align: center;
-  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-size: 1.5rem; /* サイズ調整 */
 }
 
 /* 裏表紙スライド */
