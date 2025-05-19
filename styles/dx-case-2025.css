@@ -103,23 +103,23 @@ body {
 }
 
 .profile-info h2 {
-  font-size: 2rem; /* サイズ調整 */
+  font-size: 2.5rem; /* サイズ再調整 */
   margin-bottom: 1rem;
 }
 
 .profile-info .company {
   color: var(--leaveanest-red);
-  font-size: 1.5rem; /* サイズ調整 */
+  font-size: 1.8rem; /* サイズ再調整 */
   margin-bottom: 0.5rem;
 }
 
 .profile-info .position {
-  font-size: 1.5rem; /* サイズ調整 */
+  font-size: 1.8rem; /* サイズ再調整 */
   margin-bottom: 1.5rem;
 }
 
 .profile-info h3 {
-  font-size: 1.75rem; /* サイズ調整 */
+  font-size: 2rem; /* サイズ再調整 */
   margin-bottom: 1rem;
   color: var(--text-dark);
 }
@@ -127,18 +127,20 @@ body {
 .profile-info .history-item {
   display: flex;
   margin-bottom: 1rem;
+  flex-wrap: nowrap; /* 改行を防止 */
 }
 
 .profile-info .year {
   color: var(--salesforce-blue);
-  font-size: 1.5rem; /* サイズ調整 */
+  font-size: 1.8rem; /* サイズ再調整 */
   font-weight: bold;
-  width: 5rem;
+  width: 6rem; /* 幅を広げて改行を防止 */
   flex-shrink: 0;
+  white-space: nowrap; /* 改行を防止 */
 }
 
 .profile-info .description {
-  font-size: 1.5rem; /* サイズ調整 */
+  font-size: 1.8rem; /* サイズ再調整 */
 }
 
 .profile-image {
@@ -209,7 +211,7 @@ body {
   color: var(--text-light);
 }
 
-/* ナビゲーションコントロール */
+/* ナビゲーションコントロール - 右下に集約しhover時のみ表示 */
 .nav-controls {
   position: fixed;
   bottom: 2rem;
@@ -217,18 +219,25 @@ body {
   display: flex;
   gap: 1rem;
   z-index: 100;
+  opacity: 0.2; /* 通常時は半透明 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-controls:hover {
+  opacity: 1; /* ホバー時に完全表示 */
+  transform: scale(1.05);
 }
 
 .nav-button {
-  width: 3.75rem; /* 1.5倍に拡大 */
-  height: 3.75rem; /* 1.5倍に拡大 */
+  width: 3.75rem;
+  height: 3.75rem;
   border-radius: 50%;
   background-color: var(--salesforce-blue);
   color: var(--text-light);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-size: 2.25rem;
   cursor: pointer;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -240,24 +249,32 @@ body {
   transform: scale(1.1);
 }
 
+/* ホームボタンも右下に移動 */
 .home-button {
   position: fixed;
   bottom: 2rem;
-  left: 2rem;
+  right: 8rem; /* 右側に配置 */
   z-index: 100;
   text-decoration: none;
+  opacity: 0.2; /* 通常時は半透明 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.home-button:hover {
+  opacity: 1; /* ホバー時に完全表示 */
+  transform: scale(1.05);
 }
 
 .home-button a {
-  width: 3.75rem; /* 1.5倍に拡大 */
-  height: 3.75rem; /* 1.5倍に拡大 */
+  width: 3.75rem;
+  height: 3.75rem;
   border-radius: 50%;
   background-color: var(--leaveanest-red);
   color: var(--text-light);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-size: 2.25rem;
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -266,6 +283,18 @@ body {
 .home-button a:hover {
   background-color: var(--accent-red);
   transform: scale(1.1);
+}
+
+/* ナビゲーションコントロール全体をホバーで表示 */
+.navigation-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 99;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /* ロゴ */
