@@ -1,0 +1,170 @@
+/* タイムラインスライド用スタイル */
+.timeline-slide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: var(--light-bg);
+}
+
+.timeline-slide h1 {
+  color: var(--salesforce-blue);
+  font-size: 3rem;
+  border-bottom: 4px solid var(--leaveanest-red);
+  padding-bottom: 0.5rem;
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 5rem);
+  margin-top: 1rem;
+}
+
+/* 期間表示部分 */
+.timeline-periods {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+/* 期間ごとの色設定 */
+.period-it {
+  background-color: #0B3861;
+}
+
+.period-data {
+  background-color: #084B8A;
+}
+
+.period-ai {
+  background-color: #0174DF;
+}
+
+.period-genai {
+  background-color: #01A9DB;
+}
+
+/* ツールバー表示部分 */
+.timeline-tools {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.timeline-tool-row {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.timeline-tool-name {
+  width: 20%;
+  min-width: 200px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--dark-text);
+  padding-right: 1rem;
+  text-align: right;
+}
+
+.timeline-tool-bar-container {
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+}
+
+.timeline-years {
+  display: flex;
+  width: 100%;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.timeline-year {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--dark-text);
+}
+
+.timeline-tool-bar {
+  height: 2rem;
+  position: absolute;
+  background-color: var(--salesforce-blue);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-tool-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ツール説明用モーダル */
+.tool-description {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  max-width: 300px;
+  display: none;
+}
+
+.timeline-tool-bar:hover .tool-description {
+  display: block;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .timeline-tool-name {
+    width: 30%;
+    min-width: 120px;
+    font-size: 1rem;
+  }
+  
+  .timeline-period {
+    font-size: 1rem;
+  }
+  
+  .timeline-year {
+    font-size: 0.8rem;
+  }
+  
+  .timeline-tool-bar {
+    font-size: 0.8rem;
+  }
+}

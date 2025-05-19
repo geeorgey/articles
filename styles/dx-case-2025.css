@@ -1,0 +1,358 @@
+/* dx-case-2025.css */
+:root {
+  --salesforce-blue: #009ddc;
+  --leaveanest-red: #df1514;
+  --light-blue: #e6f7ff;
+  --dark-blue: #0078c1;
+  --accent-red: #ff3b30;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-blue);
+  color: var(--text-dark);
+  overflow: hidden;
+}
+
+.slide-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* スクロール可能に */
+}
+
+.slide.active {
+  display: flex !important; /* !importantで確実に表示 */
+}
+
+/* タイトルスライド */
+.title-slide {
+  text-align: center;
+}
+
+.title-slide h1 {
+  color: var(--salesforce-blue);
+  font-size: 4.5rem; /* 1.5倍に拡大 */
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.title-slide h2 {
+  color: var(--leaveanest-red);
+  font-size: 3rem; /* 1.5倍に拡大 */
+  margin-bottom: 3rem;
+}
+
+.title-slide .event-info {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  margin-top: 3rem;
+  color: var(--text-dark);
+}
+
+/* 自己紹介スライド */
+.profile-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.profile-slide h1 {
+  color: var(--salesforce-blue);
+  font-size: 3rem; /* 1.2倍に拡大 */
+  border-bottom: 4px solid var(--leaveanest-red);
+  padding-bottom: 0.5rem;
+  align-self: flex-start;
+  margin-bottom: 0.75rem; /* マージンを半分に削減 */
+}
+
+.profile-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center; /* 中央揃えに変更 */
+  height: calc(100% - 5rem); /* ヘッダー分を除いた高さ */
+}
+
+.profile-info {
+  flex: 1;
+  overflow-y: auto; /* 必要に応じてスクロール */
+  padding-right: 1rem;
+  max-height: 100%;
+}
+
+.profile-info h2 {
+  font-size: 2.5rem; /* サイズ再調整 */
+  margin-bottom: 1rem;
+}
+
+.profile-info .company {
+  color: var(--leaveanest-red);
+  font-size: 1.8rem; /* サイズ再調整 */
+  margin-bottom: 0.5rem;
+}
+
+.profile-info .position {
+  font-size: 1.8rem; /* サイズ再調整 */
+  margin-bottom: 1.5rem;
+}
+
+.profile-info h3 {
+  font-size: 2rem; /* サイズ再調整 */
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.profile-info .history-item {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-wrap: nowrap; /* 改行を防止 */
+}
+
+.profile-info .year {
+  color: var(--salesforce-blue);
+  font-size: 1.8rem; /* サイズ再調整 */
+  font-weight: bold;
+  width: 6rem; /* 幅を広げて改行を防止 */
+  flex-shrink: 0;
+  white-space: nowrap; /* 改行を防止 */
+  margin-right: 1.5rem; /* 年とテキストの間にマージンを追加 */
+}
+
+.profile-info .description {
+  font-size: 1.8rem; /* サイズ再調整 */
+}
+
+.profile-image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 上下中央揃え */
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.profile-image img {
+  max-width: 100%;
+  max-height: 80%; /* 高さ制限 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: contain; /* アスペクト比を維持 */
+}
+
+.profile-image .image-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem; /* サイズ調整 */
+}
+
+/* 裏表紙スライド */
+.back-cover-slide {
+  text-align: center;
+}
+
+.back-cover-slide h1 {
+  color: var(--salesforce-blue);
+  font-size: 4.5rem; /* 1.5倍に拡大 */
+  margin-bottom: 3rem;
+}
+
+.back-cover-slide .presenter-info {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  margin-bottom: 1.5rem;
+}
+
+.back-cover-slide .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.back-cover-slide .social-link {
+  color: var(--salesforce-blue);
+  text-decoration: none;
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--salesforce-blue);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.back-cover-slide .social-link:hover {
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
+}
+
+/* ナビゲーションコントロール - 右下に集約しhover時のみ表示 */
+.nav-controls {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 100;
+  opacity: 0.2; /* 通常時は半透明 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-controls:hover {
+  opacity: 1; /* ホバー時に完全表示 */
+  transform: scale(1.05);
+}
+
+.nav-button {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.25rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--dark-blue);
+  transform: scale(1.1);
+}
+
+/* ホームボタンを左側に移動 */
+.home-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 14rem; /* 戻るボタンの左側に配置 */
+  z-index: 100;
+  text-decoration: none;
+  opacity: 0.2; /* 通常時は半透明 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.home-button:hover {
+  opacity: 1; /* ホバー時に完全表示 */
+  transform: scale(1.05);
+}
+
+.home-button a {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background-color: var(--leaveanest-red);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.25rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.home-button a:hover {
+  background-color: var(--accent-red);
+  transform: scale(1.1);
+}
+
+/* ナビゲーションコントロール全体をホバーで表示 */
+.navigation-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 99;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ロゴ */
+.logo {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  height: 3rem;
+  z-index: 90;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .title-slide h1 {
+    font-size: 3rem; /* モバイル向けに調整 */
+  }
+  
+  .title-slide h2 {
+    font-size: 2.25rem; /* モバイル向けに調整 */
+  }
+  
+  .title-slide .event-info {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+  
+  .profile-content {
+    flex-direction: column;
+  }
+  
+  .profile-image {
+    margin-top: 2rem;
+  }
+  
+  .profile-info .year {
+    width: 4.5rem;
+  }
+  
+  .profile-info h2 {
+    font-size: 2.25rem; /* モバイル向けに調整 */
+  }
+  
+  .profile-info .company,
+  .profile-info .position,
+  .profile-info .year,
+  .profile-info .description {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide h1 {
+    font-size: 3rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide .presenter-info {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide .social-link {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+}

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リバネスグループにおけるDX実例2025 | Salesforce Innovation Day 大阪</title>
+  <meta name="description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta name="keywords" content="リバネス, Salesforce, DX, デジタルトランスフォーメーション, CRM, クラウド">
+  <meta name="author" content="吉田丈治">
+  
+  <!-- OGP設定 -->
+  <meta property="og:title" content="リバネスグループにおけるDX実例2025">
+  <meta property="og:description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  <meta property="og:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
+  <meta property="og:site_name" content="プレゼンテーションアーカイブ">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@geeorgey">
+  <meta name="twitter:title" content="リバネスグループにおけるDX実例2025">
+  <meta name="twitter:description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
+  <meta name="twitter:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/dx-case-2025.css">
+  <link rel="stylesheet" href="styles/timeline.css">
+  
+  <style>
+    :root {
+      --salesforce-blue: #009ddc;
+      --leaveanest-red: #df1514;
+      --light-bg: #e6f7ff;
+      --dark-bg: #121a2f;
+      --dark-text: #333333;
+      --light-text: #ffffff;
+      --light-blue: #e6f7ff;
+      --dark-blue: #0078c1;
+      --accent-blue: #00a0e9;
+      --accent-red: #ff3b30;
+    }
+    
+    /* 基本スタイル */
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    /* スライドコンテナ */
+    .slides-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+    
+    /* 個別スライド - 強化版 */
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none !important; /* 強制的に非表示 */
+      flex-direction: column;
+      padding: 2rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+      z-index: 1; /* 基本z-index */
+      opacity: 0; /* 初期状態は透明 */
+      transition: opacity 0.3s ease; /* フェード効果 */
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+    }
+    
+    /* アクティブスライド - 強化版 */
+    .slide.active {
+      display: flex !important; /* 強制的に表示 */
+      z-index: 10; /* アクティブスライドは前面に */
+      opacity: 1; /* アクティブ時は完全表示 */
+    }
+    
+    /* タイトルスライド */
+    .title-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .title-slide h1 {
+      font-size: 3rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 1rem;
+    }
+    
+    .title-slide h2 {
+      font-size: 2rem;
+      color: var(--leaveanest-red);
+      margin-bottom: 2rem;
+    }
+    
+    .title-slide .event-info {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--light-text);
+    }
+    
+    .title-slide .presenter-info {
+      font-size: 1.2rem;
+      color: var(--light-text);
+    }
+    
+    /* プロフィールスライド */
+    .profile-slide h1 {
+      font-size: 3rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--leaveanest-red);
+      padding-bottom: 0.5rem;
+    }
+    
+    .profile-slide h2 {
+      color: var(--salesforce-blue);
+    }
+    
+    .profile-slide h3 {
+      color: var(--salesforce-blue);
+    }
+    
+    .profile-slide .year {
+      color: var(--salesforce-blue);
+    }
+    
+    .profile-slide .company-info {
+      color: var(--light-text);
+    }
+    
+    .profile-slide .history-item {
+      color: var(--light-text);
+    }
+    
+    .profile-slide figure figcaption {
+      color: var(--salesforce-blue);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    
+    /* タイムラインスライド */
+    .timeline-slide h1 {
+      font-size: 3rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--leaveanest-red);
+      padding-bottom: 0.5rem;
+    }
+    
+    /* Salesforce導入効果スライド */
+    .impact-slide h1 {
+      font-size: 3rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--leaveanest-red);
+      padding-bottom: 0.5rem;
+    }
+    
+    .impact-slide .impact-content {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 5rem);
+    }
+    
+    .impact-slide .impact-intro {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--light-text);
+    }
+    
+    .impact-slide .impact-items {
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+      gap: 2rem;
+    }
+    
+    .impact-slide .impact-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .impact-slide .impact-item h3 {
+      font-size: 1.5rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 1rem;
+    }
+    
+    .impact-slide .impact-item p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--light-text);
+    }
+    
+    .impact-slide .impact-item img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    
+    /* 裏表紙スライド */
+    .back-cover-slide {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .back-cover-slide h1 {
+      font-size: 2.5rem;
+      color: var(--salesforce-blue);
+      margin-bottom: 2rem;
+    }
+    
+    .back-cover-slide .presenter-info {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--light-text);
+    }
+    
+    .back-cover-slide .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .back-cover-slide .social-link {
+      color: var(--salesforce-blue);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--salesforce-blue);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-cover-slide .social-link:hover {
+      background-color: var(--salesforce-blue);
+      color: var(--light-text);
+    }
+    
+    /* ナビゲーションコントロール - 右下に集約しhover時のみ表示 */
+    .nav-controls {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+    
+    .nav-controls:hover {
+      opacity: 1;
+    }
+    
+    .nav-button {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--salesforce-blue);
+      color: var(--light-text);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    
+    .nav-button:hover {
+      background-color: var(--dark-blue);
+    }
+    
+    .nav-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    /* ホームボタンを左側に移動 */
+    .home-button {
+      position: fixed;
+      bottom: 2rem;
+      right: 14rem;
+      z-index: 100;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+    
+    .home-button:hover {
+      opacity: 1;
+    }
+    
+    .home-button a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--leaveanest-red);
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .home-button a:hover {
+      background-color: var(--accent-red);
+    }
+    
+    /* ロゴ */
+    .logo {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      height: 3rem;
+      z-index: 100;
+    }
+    
+    /* タイムライン用カラー設定 */
+    .period-it {
+      background-color: #0B3861;
+    }
+    
+    .period-構造データ化 {
+      background-color: #084B8A;
+    }
+    
+    .period-ai黎明期bi活用 {
+      background-color: #0174DF;
+    }
+    
+    .period-生成ai革命 {
+      background-color: #01A9DB;
+    }
+    
+    .timeline-tool-bar {
+      background-color: var(--salesforce-blue);
+    }
+    
+    /* プロフィールコンテンツのレイアウト */
+    .profile-content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: calc(100% - 5rem);
+    }
+    
+    .profile-info {
+      flex: 1;
+      padding-right: 2rem;
+    }
+    
+    .profile-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .profile-image img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .history-item {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    
+    .year {
+      width: 6rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .profile-content {
+        flex-direction: column;
+      }
+      
+      .profile-info {
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      
+      .title-slide h1 {
+        font-size: 2.5rem;
+      }
+      
+      .title-slide h2 {
+        font-size: 1.8rem;
+      }
+      
+      .impact-slide .impact-items {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+    <!-- スライド1: 表紙 -->
+    <div class="slide title-slide" id="slide-1">
+      <h1>リバネスグループにおける<br>DX実例2025</h1>
+      <h2>Salesforce各製品の導入と活用</h2>
+      <div class="event-info">
+        2025年5月22日 Salesforce Innovation Day 大阪<br>
+        DX推進企業の集い
+      </div>
+      <div class="presenter-info">
+        吉田丈治 / YOSHIDA George<br>
+        株式会社リバネス 取締役CIO<br>
+        株式会社リバネスナレッジ 代表取締役社長
+      </div>
+    </div>
+    
+    <!-- スライド2: 自己紹介 -->
+    <div class="slide profile-slide" id="slide-2">
+      <h1>自己紹介</h1>
+      <div class="profile-content">
+        <div class="profile-info">
+          <h2>吉田丈治 / YOSHIDA George</h2>
+          <p class="company-info">株式会社リバネス 取締役CIO</p>
+          <p class="company-info">株式会社リバネスナレッジ 代表取締役社長</p>
+          
+          <h3>経歴</h3>
+          <div class="history-item">
+            <span class="year">2002年</span>リバネス創業時に参画
+          </div>
+          <div class="history-item">
+            <span class="year">2014年</span>Sales Cloud 導入を機にCIOに就任
+          </div>
+          <div class="history-item">
+            <span class="year">2015年</span>Slack導入
+          </div>
+          <div class="history-item">
+            <span class="year">2019年</span>日本人として初めてSalesforce主催の世界イベントDreamforceにて基調講演プロダクトキーノート（AIテーマ）で講演
+          </div>
+        </div>
+        <div class="profile-image">
+          <figure>
+            <img src="images/dreamforce_2019.png" alt="Dreamforce 2019 Einstein Keynoteでの登壇の様子">
+            <figcaption>Dreamforce 2019 Einstein Keynote</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    
+    <!-- スライド3: Salesforce導入効果 (新規追加) -->
+    <div class="slide impact-slide" id="slide-3">
+      <h1>2014年にSalesforceを導入して変わったこと</h1>
+      <div class="impact-content">
+        <p class="impact-intro">2014年のSalesforce導入は、リバネスグループのビジネスプロセスに大きな変革をもたらしました。</p>
+        <div class="impact-items">
+          <div class="impact-item">
+            <h3>セールスに対する考え方を導入</h3>
+            <p>顧客中心のアプローチへと転換し、データに基づく戦略的な営業活動が可能になりました。チーム全体で顧客情報を共有し、一貫性のある対応を実現しています。</p>
+            <img src="images/salesforce_sales_mindset.jpg" alt="セールスに対する考え方の変革">
+          </div>
+          <div class="impact-item">
+            <h3>データを集約</h3>
+            <p>これまで分散していた顧客データや営業情報を一元管理することで、情報の透明性が向上し、経営判断のスピードが加速しました。データ駆動型の意思決定が標準となりました。</p>
+            <img src="images/salesforce_data_centralization.jpg" alt="データの集約と一元管理">
+          </div>
+          <div class="impact-item">
+            <h3>自動化の恩恵を得る</h3>
+            <p>ルーティン業務の自動化により、営業担当者は顧客との関係構築に集中できるようになりました。レポート作成やフォローアップなど、多くのプロセスが効率化されています。</p>
+            <img src="images/salesforce_automation.jpg" alt="業務の自動化による効率化">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- スライド4: SaaS導入履歴 -->
+    <div class="slide timeline-slide" id="slide-4">
+      <h1>SaaS導入履歴</h1>
+      <div class="timeline-container" id="timeline-container">
+        <!-- タイムラインはJavaScriptで動的に生成 -->
+      </div>
+    </div>
+    
+    <!-- スライド5: 裏表紙 -->
+    <div class="slide back-cover-slide" id="slide-5">
+      <h1>ご清聴ありがとうございました</h1>
+      <div class="presenter-info">
+        吉田丈治 / YOSHIDA George<br>
+        株式会社リバネス 取締役CIO<br>
+        株式会社リバネスナレッジ 代表取締役社長
+      </div>
+      <div class="social-links">
+        <a href="https://x.com/geeorgey" target="_blank" rel="noopener noreferrer" class="social-link">X: @geeorgey</a>
+        <a href="https://www.linkedin.com/in/geeorgey/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn: geeorgey</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ナビゲーションコントロール -->
+  <div class="nav-controls">
+    <button class="nav-button prev-button" id="prev-button">←</button>
+    <button class="nav-button next-button" id="next-button">→</button>
+  </div>
+  
+  <!-- ホームボタン -->
+  <div class="home-button">
+    <a href="index.html" title="トップページに戻る">↩</a>
+  </div>
+  
+  <!-- ロゴ -->
+  <img src="images/leaveanest_logo.png" alt="株式会社リバネスのロゴ" class="logo">
+  
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // スライド要素を取得
+      const slides = document.querySelectorAll('.slide');
+      let currentSlide = 0;
+      
+      // URLからページパラメータを取得する関数
+      function getPageFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = parseInt(urlParams.get('page'));
+        // パラメータが存在し、有効な数値で、スライド範囲内の場合
+        if (page && !isNaN(page) && page > 0 && page <= slides.length) {
+          return page - 1; // 0ベースのインデックスに変換
+        }
+        return 0; // デフォルトは最初のスライド
+      }
+      
+      // URLを更新する関数
+      function updateURL(slideIndex) {
+        const newURL = `${window.location.pathname}?page=${slideIndex + 1}`;
+        window.history.pushState({ slideIndex: slideIndex }, '', newURL);
+      }
+      
+      // スライドを表示する関数 - 改良版
+      function showSlide(index) {
+        // 範囲外の場合は調整
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        
+        // すべてのスライドを非表示に設定
+        slides.forEach(slide => {
+          slide.style.display = 'none';
+          slide.classList.remove('active');
+        });
+        
+        // 現在のスライドインデックスを更新
+        currentSlide = index;
+        
+        // 確実に非表示処理が完了してから表示処理を行う
+        setTimeout(() => {
+          // アクティブなスライドを表示
+          const activeSlide = slides[currentSlide];
+          activeSlide.style.display = 'flex';
+          activeSlide.classList.add('active');
+          
+          // URLを更新
+          updateURL(currentSlide);
+          
+          // ナビゲーションボタンの状態を更新
+          document.getElementById('prev-button').disabled = currentSlide === 0;
+          document.getElementById('next-button').disabled = currentSlide === slides.length - 1;
+          
+          console.log('現在表示中のスライド:', currentSlide + 1);
+          
+          // タイムラインスライドの場合、タイムラインを描画
+          if (currentSlide === 3) { // スライド順序変更に伴い、インデックスを3に更新
+            loadTimelineData();
+          }
+        }, 100); // 遅延時間を増加
+      }
+      
+      // 前のスライドに移動
+      document.getElementById('prev-button').addEventListener('click', function() {
+        showSlide(currentSlide - 1);
+      });
+      
+      // 次のスライドに移動
+      document.getElementById('next-button').addEventListener('click', function() {
+        showSlide(currentSlide + 1);
+      });
+      
+      // キーボードナビゲーション
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          showSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+          showSlide(currentSlide + 1);
+        }
+      });
+      
+      // ブラウザの戻る/進むボタンでのナビゲーション
+      window.addEventListener('popstate', function(event) {
+        if (event.state && typeof event.state.slideIndex !== 'undefined') {
+          showSlide(event.state.slideIndex);
+        } else {
+          showSlide(getPageFromURL());
+        }
+      });
+      
+      // タイムラインデータの読み込みと表示
+      async function loadTimelineData() {
+        try {
+          // タイムラインコンテナをクリア
+          const timelineContainer = document.getElementById('timeline-container');
+          if (!timelineContainer) return;
+          
+          timelineContainer.innerHTML = '';
+          
+          // GitHub Pages環境ではfetchを使用
+          let timelineData;
+          if (window.location.protocol.includes('http')) {
+            try {
+              const response = await fetch('data/timeline-data.json');
+              timelineData = await response.json();
+            } catch (error) {
+              console.error('タイムラインデータの読み込みに失敗しました:', error);
+              // エラー時は埋め込みデータを使用
+              timelineData = getEmbeddedTimelineData();
+            }
+          } else {
+            // ローカル環境では埋め込みデータを使用
+            timelineData = getEmbeddedTimelineData();
+          }
+          
+          // タイムラインを描画
+          renderTimeline(timelineData);
+        } catch (error) {
+          console.error('タイムラインの描画に失敗しました:', error);
+        }
+      }
+      
+      // 埋め込みタイムラインデータを取得
+      function getEmbeddedTimelineData() {
+        return {
+          "title": "SaaS導入履歴",
+          "periods": [
+            {
+              "name": "IT化",
+              "start": 2013,
+              "end": 2014,
+              "description": "Google Workspaceを使って、メール、カレンダーといった基盤を作り、スライド、ドキュメント、スプレッドシートを使ってデータを蓄積、共有をしてきた時代。"
+            },
+            {
+              "name": "構造データ化",
+              "start": 2014,
+              "end": 2018,
+              "description": "Salesforceの導入を始め、データの構造化と活用を進めた時期。"
+            },
+            {
+              "name": "AI黎明期/BI活用",
+              "start": 2018,
+              "end": 2023,
+              "description": "Sales Cloud EinsteinやAccount Engagement Advanceなど、AIを活用したツールの導入期。"
+            },
+            {
+              "name": "生成AI革命",
+              "start": 2023,
+              "end": 2025,
+              "description": "ChatGPT Enterpriseの導入やAgentforceの活用など、生成AIを本格的に活用する時代。"
+            }
+          ],
+          "tools": [
+            {
+              "name": "Sales Cloud",
+              "start": 2014,
+              "end": 2017,
+              "description": "2014年からSalesforceのSales Cloudの活用を開始。"
+            },
+            {
+              "name": "Sales Cloud Einstein",
+              "start": 2018,
+              "end": 2023,
+              "description": "2018年にSales Cloud Einsteinエディションへアップデートし、SalesforceのAI機能の活用を開始。2019年にDreamforceのEinstein Keynoteに日本人として初登壇。"
+            },
+            {
+              "name": "Einstein 1 Platform (E1)",
+              "start": 2024,
+              "end": 2025,
+              "description": "2024年にSales CloudのライセンスをEinstein 1 Platformエディションにアップグレード。2025年からAgentforceクレジットを取得しAgentforceの活用を開始。"
+            },
+            {
+              "name": "Pardot Standard",
+              "start": 2014,
+              "end": 2018,
+              "description": "2014年末からAccount Engagement(旧Pardot)を導入し、Marketing Automationの活用を開始。"
+            },
+            {
+              "name": "Account Engagement Advance(Einstein)",
+              "start": 2019,
+              "end": 2025,
+              "description": "2019年にEinstein機能が使えるAdvanceエディションにアップグレード。「配送時間最適化」機能により開封率が5%向上。"
+            },
+            {
+              "name": "Slack",
+              "start": 2015,
+              "end": 2019,
+              "description": "2015年9月から社内コミュニケーションにSlackを導入。社内の情報流通の風通しを改善。"
+            },
+            {
+              "name": "Enterprise Grid",
+              "start": 2020,
+              "end": 2023,
+              "description": "2020年にEnterprise Gridプランにアップグレード。社外とのSlackコネクトを無制限に活用し、3000名超の社外メンバーと連携。"
+            },
+            {
+              "name": "Slack AI",
+              "start": 2024,
+              "end": 2025,
+              "description": "2024年よりSlack AIを導入し、Slack上での生成AI活用を推進。"
+            },
+            {
+              "name": "Experience Cloud",
+              "start": 2017,
+              "end": 2018,
+              "description": "2017年よりExperience Cloudを会員管理用に利用。2000名程度の会員を獲得。"
+            },
+            {
+              "name": "Heroku",
+              "start": 2019,
+              "end": 2025,
+              "description": "ライセンス費用最適化のためHeroku上に会員サイトを移行。Heroku Connectで会員情報をSales Cloudと同期。"
+            },
+            {
+              "name": "Quip",
+              "start": 2018,
+              "end": 2025,
+              "description": "2018年よりドキュメントをQuipに蓄積。2025年にSlackのCanvasに移管予定。"
+            },
+            {
+              "name": "CRM Analytics",
+              "start": 2019,
+              "end": 2025,
+              "description": "2019年よりBIツールとしてCRM Analyticsを活用開始。"
+            },
+            {
+              "name": "Tableau",
+              "start": 2020,
+              "end": 2025,
+              "description": "2020年よりTableauを導入し、現在はこちらを重視。"
+            },
+            {
+              "name": "Snowflake",
+              "start": 2023,
+              "end": 2025,
+              "description": "2023年よりSnowflakeを導入し、データ基盤を強化。"
+            },
+            {
+              "name": "DataCloud",
+              "start": 2023,
+              "end": 2025,
+              "description": "2023年よりSalesforce Data Cloudを導入。2025年からのAgentforce活用の基盤に。"
+            },
+            {
+              "name": "ChatGPT Enterprise",
+              "start": 2025,
+              "end": 2025,
+              "description": "2025年5月よりChatGPTのEnterpriseプランを契約。2022年に開始した生成AI活用を全社展開。"
+            }
+          ]
+        };
+      }
+      
+      // タイムラインを描画する関数
+      function renderTimeline(data) {
+        if (!data || !data.periods || !data.tools) {
+          console.error('タイムラインデータが不正です');
+          return;
+        }
+        
+        const timelineContainer = document.getElementById('timeline-container');
+        if (!timelineContainer) return;
+        
+        // 年の範囲を計算
+        const startYear = Math.min(...data.periods.map(p => p.start), ...data.tools.map(t => t.start));
+        const endYear = Math.max(...data.periods.map(p => p.end), ...data.tools.map(t => t.end));
+        const yearRange = endYear - startYear + 1;
+        
+        // 期間表示部分を作成
+        const periodsDiv = document.createElement('div');
+        periodsDiv.className = 'timeline-periods';
+        
+        // 期間ごとの色分け表示
+        data.periods.forEach(period => {
+          const periodWidth = ((period.end - period.start + 1) / yearRange) * 100;
+          const periodDiv = document.createElement('div');
+          const periodClass = period.name.toLowerCase().replace(/[\/\s]/g, '');
+          periodDiv.className = `timeline-period period-${periodClass}`;
+          periodDiv.style.width = `${periodWidth}%`;
+          periodDiv.textContent = period.name;
+          periodDiv.title = period.description;
+          periodsDiv.appendChild(periodDiv);
+        });
+        
+        timelineContainer.appendChild(periodsDiv);
+        
+        // 年表示部分を作成
+        const yearsDiv = document.createElement('div');
+        yearsDiv.className = 'timeline-years';
+        
+        for (let year = startYear; year <= endYear; year++) {
+          const yearDiv = document.createElement('div');
+          yearDiv.className = 'timeline-year';
+          yearDiv.textContent = year;
+          yearsDiv.appendChild(yearDiv);
+        }
+        
+        timelineContainer.appendChild(yearsDiv);
+        
+        // ツール表示部分を作成
+        const toolsContainer = document.createElement('div');
+        toolsContainer.className = 'timeline-tools';
+        
+        // ツールごとの表示
+        data.tools.forEach(tool => {
+          const toolRow = document.createElement('div');
+          toolRow.className = 'timeline-tool-row';
+          
+          // ツール名
+          const toolName = document.createElement('div');
+          toolName.className = 'timeline-tool-name';
+          toolName.textContent = tool.name;
+          toolRow.appendChild(toolName);
+          
+          // ツールバーコンテナ
+          const toolBarContainer = document.createElement('div');
+          toolBarContainer.className = 'timeline-tool-bar-container';
+          
+          // ツールバー
+          const toolBar = document.createElement('div');
+          toolBar.className = 'timeline-tool-bar';
+          
+          // 位置とサイズを計算
+          const left = ((tool.start - startYear) / yearRange) * 100;
+          const width = ((tool.end - tool.start + 1) / yearRange) * 100;
+          
+          toolBar.style.left = `${left}%`;
+          toolBar.style.width = `${width}%`;
+          toolBar.textContent = tool.name;
+          
+          // ツール説明
+          const toolDesc = document.createElement('div');
+          toolDesc.className = 'tool-description';
+          toolDesc.textContent = tool.description;
+          toolBar.appendChild(toolDesc);
+          
+          toolBarContainer.appendChild(toolBar);
+          toolRow.appendChild(toolBarContainer);
+          toolsContainer.appendChild(toolRow);
+        });
+        
+        timelineContainer.appendChild(toolsContainer);
+      }
+      
+      // 初期スライドを表示
+      // ページロード時に一度すべてのスライドを非表示にしてからアクティブなスライドを表示
+      window.addEventListener('load', function() {
+        // すべてのスライドを非表示に設定
+        slides.forEach(slide => {
+          slide.style.display = 'none';
+          slide.classList.remove('active');
+        });
+        
+        // URLからページ番号を取得して対応するスライドを表示
+        const initialSlideIndex = getPageFromURL();
+        showSlide(initialSlideIndex);
+      });
+    });
+  </script>
+</body>
+</html>
