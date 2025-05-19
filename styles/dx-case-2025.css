@@ -37,10 +37,11 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  overflow-y: auto; /* スクロール可能に */
 }
 
 .slide.active {
-  display: flex;
+  display: flex !important; /* !importantで確実に表示 */
 }
 
 /* タイトルスライド */

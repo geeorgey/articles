@@ -118,6 +118,11 @@
       const slides = document.querySelectorAll('.slide');
       let currentSlide = 0;
       
+      // 最初にすべてのスライドを非表示に
+      slides.forEach(slide => {
+        slide.style.display = 'none';
+      });
+      
       // URLからページパラメータを取得する関数
       function getPageFromURL() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -141,11 +146,15 @@
         if (index < 0) index = 0;
         if (index >= slides.length) index = slides.length - 1;
         
-        // 現在のスライドを非表示
-        slides[currentSlide].classList.remove('active');
+        // すべてのスライドを非表示
+        slides.forEach(slide => {
+          slide.style.display = 'none';
+          slide.classList.remove('active');
+        });
         
         // 新しいスライドを表示
         currentSlide = index;
+        slides[currentSlide].style.display = 'flex';
         slides[currentSlide].classList.add('active');
         
         // URLを更新
@@ -184,12 +193,14 @@
         }
       });
       
-      // 初期スライドを表示
-      currentSlide = getPageFromURL();
-      showSlide(currentSlide);
-      
-      // 初期状態をhistoryに追加
-      window.history.replaceState({ slideIndex: currentSlide }, '', `?page=${currentSlide + 1}`);
+      // 初期スライドを表示（遅延実行して確実に適用）
+      setTimeout(function() {
+        currentSlide = getPageFromURL();
+        showSlide(currentSlide);
+        
+        // 初期状態をhistoryに追加
+        window.history.replaceState({ slideIndex: currentSlide }, '', `?page=${currentSlide + 1}`);
+      }, 100);
     });
   </script>
 </body>
