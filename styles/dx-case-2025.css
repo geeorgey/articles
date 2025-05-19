@@ -80,11 +80,11 @@ body {
 
 .profile-slide h1 {
   color: var(--salesforce-blue);
-  font-size: 2.5rem; /* サイズ調整 */
+  font-size: 3rem; /* 1.2倍に拡大 */
   border-bottom: 4px solid var(--leaveanest-red);
   padding-bottom: 0.5rem;
   align-self: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem; /* マージンを半分に削減 */
 }
 
 .profile-content {
