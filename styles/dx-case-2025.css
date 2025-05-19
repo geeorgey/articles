@@ -1,29 +1,26 @@
 /* dx-case-2025.css */
 :root {
   --salesforce-blue: #009ddc;
-  --ribanest-red: #df1514;
-  --light-gray: #f5f5f5;
-  --dark-gray: #333333;
-  --white: #ffffff;
+  --leaveanest-red: #df1514;
   --light-blue: #e6f7ff;
-  --light-red: #ffebeb;
-  --gradient-bg: linear-gradient(135deg, var(--light-blue), var(--light-gray));
+  --dark-blue: #0078c1;
+  --accent-red: #ff3b30;
+  --text-dark: #333333;
+  --text-light: #ffffff;
 }
 
 body {
-  font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   margin: 0;
   padding: 0;
-  background: var(--gradient-bg);
-  color: var(--dark-gray);
-  line-height: 1.6;
+  background-color: var(--light-blue);
+  color: var(--text-dark);
+  overflow: hidden;
 }
 
 .slide-container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
   position: relative;
   overflow: hidden;
 }
@@ -31,65 +28,66 @@ body {
 .slide {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 2rem;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.slide-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  z-index: 2;
+.slide.active {
+  display: flex;
 }
 
-.cover-slide {
-  background: var(--gradient-bg);
+/* タイトルスライド */
+.title-slide {
   text-align: center;
-  justify-content: center;
 }
 
-.cover-slide h1 {
-  font-size: 3.5rem;
+.title-slide h1 {
   color: var(--salesforce-blue);
-  margin-bottom: 1.5rem;
-  font-weight: 700;
+  font-size: 4.5rem; /* 1.5倍に拡大 */
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
-.cover-slide h2 {
-  font-size: 2rem;
-  color: var(--ribanest-red);
+.title-slide h2 {
+  color: var(--leaveanest-red);
+  font-size: 3rem; /* 1.5倍に拡大 */
   margin-bottom: 3rem;
-  font-weight: 500;
 }
 
-.cover-slide .event-info {
-  font-size: 1.5rem;
+.title-slide .event-info {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
   margin-top: 3rem;
-  color: var(--dark-gray);
+  color: var(--text-dark);
 }
 
+/* 自己紹介スライド */
 .profile-slide {
-  background: var(--white);
-  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem;
 }
 
-.profile-slide h2 {
-  font-size: 2.5rem;
+.profile-slide h1 {
   color: var(--salesforce-blue);
-  margin-bottom: 2rem;
-  border-bottom: 3px solid var(--ribanest-red);
+  font-size: 3.75rem; /* 1.5倍に拡大 */
+  border-bottom: 4px solid var(--leaveanest-red);
   padding-bottom: 0.5rem;
-  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 3rem;
 }
 
 .profile-content {
   display: flex;
-  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
@@ -97,114 +95,223 @@ body {
   flex: 1;
 }
 
+.profile-info h2 {
+  font-size: 3rem; /* 1.5倍に拡大 */
+  margin-bottom: 1.5rem;
+}
+
+.profile-info .company {
+  color: var(--leaveanest-red);
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  margin-bottom: 0.75rem;
+}
+
+.profile-info .position {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  margin-bottom: 3rem;
+}
+
+.profile-info h3 {
+  font-size: 2.625rem; /* 1.5倍に拡大 */
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.profile-info .history-item {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.profile-info .year {
+  color: var(--salesforce-blue);
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  font-weight: bold;
+  width: 6rem;
+  flex-shrink: 0;
+}
+
+.profile-info .description {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+}
+
 .profile-image {
   flex: 1;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-image img {
   max-width: 100%;
+  max-height: 500px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.profile-name {
-  font-size: 2rem;
-  color: var(--dark-gray);
-  margin-bottom: 1rem;
-}
-
-.profile-position {
-  font-size: 1.2rem;
-  color: var(--ribanest-red);
-  margin-bottom: 2rem;
-}
-
-.career-item {
-  margin-bottom: 1rem;
-  display: flex;
-}
-
-.career-year {
-  min-width: 80px;
-  font-weight: bold;
-  color: var(--salesforce-blue);
-}
-
-.back-slide {
-  background: var(--gradient-bg);
+.profile-image .image-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
+  padding: 0.75rem;
   text-align: center;
-  justify-content: center;
+  font-size: 2.25rem; /* 1.5倍に拡大 */
 }
 
-.back-slide h2 {
-  font-size: 2.5rem;
+/* 裏表紙スライド */
+.back-cover-slide {
+  text-align: center;
+}
+
+.back-cover-slide h1 {
   color: var(--salesforce-blue);
+  font-size: 4.5rem; /* 1.5倍に拡大 */
+  margin-bottom: 3rem;
+}
+
+.back-cover-slide .presenter-info {
+  font-size: 2.25rem; /* 1.5倍に拡大 */
   margin-bottom: 1.5rem;
 }
 
-.back-slide .contact-info {
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  color: var(--dark-gray);
+.back-cover-slide .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.logo {
-  position: absolute;
-  left: 2rem;
-  bottom: 2rem;
-  width: 150px;
-  z-index: 3;
+.back-cover-slide .social-link {
+  color: var(--salesforce-blue);
+  text-decoration: none;
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--salesforce-blue);
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
-.navigation {
+.back-cover-slide .social-link:hover {
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
+}
+
+/* ナビゲーションコントロール */
+.nav-controls {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   display: flex;
   gap: 1rem;
-  z-index: 10;
+  z-index: 100;
 }
 
 .nav-button {
-  background: var(--salesforce-blue);
-  color: white;
-  border: none;
+  width: 3.75rem; /* 1.5倍に拡大 */
+  height: 3.75rem; /* 1.5倍に拡大 */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  background-color: var(--salesforce-blue);
+  color: var(--text-light);
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  align-items: center;
+  font-size: 2.25rem; /* 1.5倍に拡大 */
   cursor: pointer;
-  transition: all 0.3s ease;
+  border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-  background: var(--ribanest-red);
-  transform: translateY(-2px);
+  background-color: var(--dark-blue);
+  transform: scale(1.1);
 }
 
 .home-button {
-  background: var(--dark-gray);
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 100;
+  text-decoration: none;
 }
 
+.home-button a {
+  width: 3.75rem; /* 1.5倍に拡大 */
+  height: 3.75rem; /* 1.5倍に拡大 */
+  border-radius: 50%;
+  background-color: var(--leaveanest-red);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.25rem; /* 1.5倍に拡大 */
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.home-button a:hover {
+  background-color: var(--accent-red);
+  transform: scale(1.1);
+}
+
+/* ロゴ */
+.logo {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  height: 3rem;
+  z-index: 90;
+}
+
+/* レスポンシブデザイン */
 @media (max-width: 768px) {
-  .cover-slide h1 {
-    font-size: 2.5rem;
+  .title-slide h1 {
+    font-size: 3rem; /* モバイル向けに調整 */
   }
   
-  .cover-slide h2 {
-    font-size: 1.5rem;
+  .title-slide h2 {
+    font-size: 2.25rem; /* モバイル向けに調整 */
+  }
+  
+  .title-slide .event-info {
+    font-size: 1.5rem; /* モバイル向けに調整 */
   }
   
   .profile-content {
     flex-direction: column;
   }
   
-  .logo {
-    width: 100px;
+  .profile-image {
+    margin-top: 2rem;
+  }
+  
+  .profile-info .year {
+    width: 4.5rem;
+  }
+  
+  .profile-info h2 {
+    font-size: 2.25rem; /* モバイル向けに調整 */
+  }
+  
+  .profile-info .company,
+  .profile-info .position,
+  .profile-info .year,
+  .profile-info .description {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide h1 {
+    font-size: 3rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide .presenter-info {
+    font-size: 1.5rem; /* モバイル向けに調整 */
+  }
+  
+  .back-cover-slide .social-link {
+    font-size: 1.5rem; /* モバイル向けに調整 */
   }
 }
