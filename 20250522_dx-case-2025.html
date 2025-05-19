@@ -36,6 +36,7 @@
   
   <!-- スタイルシート -->
   <link rel="stylesheet" href="styles/dx-case-2025.css">
+  <link rel="stylesheet" href="styles/timeline.css">
 </head>
 <body>
   <div class="slide-container">
@@ -83,8 +84,27 @@
       </div>
     </div>
     
-    <!-- スライド3: 裏表紙 -->
-    <div class="slide back-cover-slide" id="slide-3">
+    <!-- スライド3: SaaS導入履歴 -->
+    <div class="slide timeline-slide" id="slide-3">
+      <h1>SaaS導入履歴</h1>
+      
+      <div class="timeline-container">
+        <div class="timeline-periods" id="timeline-periods">
+          <!-- 期間はJavaScriptで動的に生成 -->
+        </div>
+        
+        <div class="timeline-years" id="timeline-years">
+          <!-- 年はJavaScriptで動的に生成 -->
+        </div>
+        
+        <div class="timeline-tools" id="timeline-tools">
+          <!-- ツールバーはJavaScriptで動的に生成 -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- スライド4: 裏表紙 -->
+    <div class="slide back-cover-slide" id="slide-4">
       <h1>ご清聴ありがとうございました</h1>
       <div class="presenter-info">
         吉田丈治 / YOSHIDA George<br>
@@ -193,6 +213,262 @@
         }
       });
       
+      // タイムラインデータの読み込みと表示
+      async function loadTimelineData() {
+        try {
+          // GitHub Pages環境ではfetchを使用
+          if (window.location.protocol.includes('http')) {
+            const response = await fetch('data/timeline-data.json');
+            const data = await response.json();
+            renderTimeline(data);
+          } else {
+            // ローカル環境では埋め込みデータを使用
+            const timelineData = {
+              "title": "SaaS導入履歴",
+              "periods": [
+                {
+                  "name": "IT化",
+                  "start": 2013,
+                  "end": 2014,
+                  "description": "Google Workspaceを使って、メール、カレンダーといった基盤を作り、スライド、ドキュメント、スプレッドシートを使ってデータを蓄積、共有をしてきた時代。"
+                },
+                {
+                  "name": "構造データ化",
+                  "start": 2014,
+                  "end": 2018,
+                  "description": "Salesforceの導入を始め、データの構造化と活用を進めた時期。"
+                },
+                {
+                  "name": "AI黎明期/BI活用",
+                  "start": 2018,
+                  "end": 2023,
+                  "description": "Sales Cloud EinsteinやAccount Engagement Advanceなど、AIを活用したツールの導入期。"
+                },
+                {
+                  "name": "生成AI革命",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "ChatGPT Enterpriseの導入やAgentforceの活用など、生成AIを本格的に活用する時代。"
+                }
+              ],
+              "tools": [
+                {
+                  "name": "Sales Cloud",
+                  "start": 2014,
+                  "end": 2018,
+                  "description": "2014年からSalesforceのSales Cloudの活用を開始。"
+                },
+                {
+                  "name": "Sales Cloud Einstein",
+                  "start": 2018,
+                  "end": 2024,
+                  "description": "2018年にSales Cloud Einsteinエディションへアップデートし、SalesforceのAI機能の活用を開始。2019年にDreamforceのEinstein Keynoteに日本人として初登壇。"
+                },
+                {
+                  "name": "Einstein 1 Platform (E1)",
+                  "start": 2024,
+                  "end": 2025,
+                  "description": "2024年にSales CloudのライセンスをEinstein 1 Platformエディションにアップグレード。2025年からAgentforceクレジットを取得しAgentforceの活用を開始。"
+                },
+                {
+                  "name": "Pardot Standard",
+                  "start": 2014,
+                  "end": 2019,
+                  "description": "2014年末からAccount Engagement(旧Pardot)を導入し、Marketing Automationの活用を開始。"
+                },
+                {
+                  "name": "Account Engagement Advance(Einstein)",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "2019年にEinstein機能が使えるAdvanceエディションにアップグレード。「配送時間最適化」機能により開封率が5%向上。"
+                },
+                {
+                  "name": "Slack",
+                  "start": 2015,
+                  "end": 2020,
+                  "description": "2015年9月から社内コミュニケーションにSlackを導入。社内の情報流通の風通しを改善。"
+                },
+                {
+                  "name": "Enterprise Grid",
+                  "start": 2020,
+                  "end": 2024,
+                  "description": "2020年末にEnterprise Gridプランにアップグレード。社外とのSlackコネクトを無制限に活用し、3000名超の社外メンバーと連携。"
+                },
+                {
+                  "name": "Slack AI",
+                  "start": 2024,
+                  "end": 2025,
+                  "description": "2024年9月よりSlack AIを導入し、Slack上での生成AI活用を推進。"
+                },
+                {
+                  "name": "Experience Cloud",
+                  "start": 2017,
+                  "end": 2019,
+                  "description": "2017年よりExperience Cloudを会員管理用に利用。2000名程度の会員を獲得。"
+                },
+                {
+                  "name": "Heroku",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "ライセンス費用最適化のためHeroku上に会員サイトを移行。Heroku Connectで会員情報をSales Cloudと同期。"
+                },
+                {
+                  "name": "Quip",
+                  "start": 2018,
+                  "end": 2025,
+                  "description": "2018年よりドキュメントをQuipに蓄積。2025年にSlackのCanvasに移管予定。"
+                },
+                {
+                  "name": "CRM Analytics",
+                  "start": 2019,
+                  "end": 2025,
+                  "description": "2019年よりBIツールとしてCRM Analyticsを活用開始。"
+                },
+                {
+                  "name": "Tableau",
+                  "start": 2020,
+                  "end": 2025,
+                  "description": "2020年よりTableauを導入し、現在はこちらを重視。"
+                },
+                {
+                  "name": "Snowflake",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "2023年よりSnowflakeを導入し、データ基盤を強化。"
+                },
+                {
+                  "name": "DataCloud",
+                  "start": 2023,
+                  "end": 2025,
+                  "description": "2023年よりSalesforce Data Cloudを導入。2025年からのAgentforce活用の基盤に。"
+                },
+                {
+                  "name": "ChatGPT Enterprise",
+                  "start": 2025,
+                  "end": 2025,
+                  "description": "2025年5月よりChatGPTのEnterpriseプランを契約。2022年に開始した生成AI活用を全社展開。"
+                }
+              ]
+            };
+            renderTimeline(timelineData);
+          }
+        } catch (error) {
+          console.error('タイムラインデータの読み込みに失敗しました:', error);
+        }
+      }
+      
+      function renderTimeline(data) {
+        // 年の範囲を決定
+        const startYear = 2013;
+        const endYear = 2025;
+        const yearCount = endYear - startYear + 1;
+        
+        // 期間の表示
+        const periodsContainer = document.getElementById('timeline-periods');
+        if (!periodsContainer) return; // タイムラインスライドが表示されていない場合は処理をスキップ
+        
+        periodsContainer.innerHTML = '';
+        
+        const periodClasses = ['period-it', 'period-data', 'period-ai', 'period-genai'];
+        
+        data.periods.forEach((period, index) => {
+          const width = ((period.end - period.start + 1) / yearCount) * 100;
+          const periodElement = document.createElement('div');
+          periodElement.className = `timeline-period ${periodClasses[index % periodClasses.length]}`;
+          periodElement.style.width = `${width}%`;
+          periodElement.textContent = period.name;
+          periodElement.title = period.description;
+          periodsContainer.appendChild(periodElement);
+        });
+        
+        // 年の表示
+        const yearsContainer = document.getElementById('timeline-years');
+        if (yearsContainer) {
+          yearsContainer.innerHTML = '';
+          
+          for (let year = startYear; year <= endYear; year++) {
+            const yearElement = document.createElement('div');
+            yearElement.className = 'timeline-year';
+            yearElement.textContent = year + '年';
+            yearsContainer.appendChild(yearElement);
+          }
+        }
+        
+        // ツールバーの表示
+        const toolsContainer = document.getElementById('timeline-tools');
+        if (toolsContainer) {
+          toolsContainer.innerHTML = '';
+          
+          // ツールの色を設定
+          const toolColors = [
+            '#0176D3', // Salesforce Blue
+            '#1589EE', // Lighter Blue
+            '#0B5CAB', // Darker Blue
+            '#E60012', // Leave a Nest Red
+            '#FF6666', // Lighter Red
+            '#01A9DB', // Cyan
+            '#04B4AE', // Teal
+            '#088A68', // Green
+            '#5FB404', // Lime
+            '#AEB404', // Yellow
+            '#DF7401', // Orange
+            '#8A0886', // Purple
+            '#6A0888', // Dark Purple
+            '#2E2E2E', // Dark Gray
+            '#424242', // Gray
+            '#848484'  // Light Gray
+          ];
+          
+          data.tools.forEach((tool, index) => {
+            // ツール行の作成
+            const toolRow = document.createElement('div');
+            toolRow.className = 'timeline-tool-row';
+            
+            // ツール名の表示
+            const toolName = document.createElement('div');
+            toolName.className = 'timeline-tool-name';
+            toolName.textContent = tool.name;
+            toolRow.appendChild(toolName);
+            
+            // ツールバーコンテナの作成
+            const barContainer = document.createElement('div');
+            barContainer.className = 'timeline-tool-bar-container';
+            
+            // ツールバーの作成
+            const toolBar = document.createElement('div');
+            toolBar.className = 'timeline-tool-bar';
+            
+            // バーの位置とサイズを計算
+            const left = ((tool.start - startYear) / yearCount) * 100;
+            const width = ((tool.end - tool.start + 1) / yearCount) * 100;
+            
+            toolBar.style.left = `${left}%`;
+            toolBar.style.width = `${width}%`;
+            toolBar.style.backgroundColor = toolColors[index % toolColors.length];
+            toolBar.textContent = tool.name;
+            
+            // ツール説明のポップアップ
+            const description = document.createElement('div');
+            description.className = 'tool-description';
+            description.textContent = tool.description;
+            toolBar.appendChild(description);
+            
+            // ホバーイベントの追加
+            toolBar.addEventListener('mouseenter', () => {
+              description.style.display = 'block';
+            });
+            
+            toolBar.addEventListener('mouseleave', () => {
+              description.style.display = 'none';
+            });
+            
+            barContainer.appendChild(toolBar);
+            toolRow.appendChild(barContainer);
+            toolsContainer.appendChild(toolRow);
+          });
+        }
+      }
+      
       // 初期スライドを表示（遅延実行して確実に適用）
       setTimeout(function() {
         currentSlide = getPageFromURL();
@@ -200,6 +476,9 @@
         
         // 初期状態をhistoryに追加
         window.history.replaceState({ slideIndex: currentSlide }, '', `?page=${currentSlide + 1}`);
+        
+        // タイムラインデータの読み込み
+        loadTimelineData();
       }, 100);
     });
   </script>
