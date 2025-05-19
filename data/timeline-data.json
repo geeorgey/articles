@@ -30,13 +30,13 @@
     {
       "name": "Sales Cloud",
       "start": 2014,
-      "end": 2018,
+      "end": 2017,
       "description": "2014年からSalesforceのSales Cloudの活用を開始。"
     },
     {
       "name": "Sales Cloud Einstein",
       "start": 2018,
-      "end": 2024,
+      "end": 2023,
       "description": "2018年にSales Cloud Einsteinエディションへアップデートし、SalesforceのAI機能の活用を開始。2019年にDreamforceのEinstein Keynoteに日本人として初登壇。"
     },
     {
@@ -48,7 +48,7 @@
     {
       "name": "Pardot Standard",
       "start": 2014,
-      "end": 2019,
+      "end": 2018,
       "description": "2014年末からAccount Engagement(旧Pardot)を導入し、Marketing Automationの活用を開始。"
     },
     {
@@ -60,25 +60,25 @@
     {
       "name": "Slack",
       "start": 2015,
-      "end": 2020,
+      "end": 2019,
       "description": "2015年9月から社内コミュニケーションにSlackを導入。社内の情報流通の風通しを改善。"
     },
     {
       "name": "Enterprise Grid",
       "start": 2020,
-      "end": 2024,
-      "description": "2020年末にEnterprise Gridプランにアップグレード。社外とのSlackコネクトを無制限に活用し、3000名超の社外メンバーと連携。"
+      "end": 2023,
+      "description": "2020年にEnterprise Gridプランにアップグレード。社外とのSlackコネクトを無制限に活用し、3000名超の社外メンバーと連携。"
     },
     {
       "name": "Slack AI",
       "start": 2024,
       "end": 2025,
-      "description": "2024年9月よりSlack AIを導入し、Slack上での生成AI活用を推進。"
+      "description": "2024年よりSlack AIを導入し、Slack上での生成AI活用を推進。"
     },
     {
       "name": "Experience Cloud",
       "start": 2017,
-      "end": 2019,
+      "end": 2018,
       "description": "2017年よりExperience Cloudを会員管理用に利用。2000名程度の会員を獲得。"
     },
     {

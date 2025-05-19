@@ -358,6 +358,12 @@
       }
       
       function renderTimeline(data) {
+        // ツール名の重複表示を防止するためのクリーンアップ
+        const toolsContainer = document.getElementById('timeline-tools');
+        if (toolsContainer) {
+          toolsContainer.innerHTML = '';
+        }
+        
         // 年の範囲を決定
         const startYear = 2013;
         const endYear = 2025;
