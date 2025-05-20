@@ -12,7 +12,7 @@
   <meta property="og:title" content="リバネスグループにおけるDX実例2025">
   <meta property="og:description" content="リバネスグループにおけるSalesforce各製品の導入と活用事例について解説します。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  <meta property="og:url" content="https://geeorgey.github.io/articles/presentations/20250522_dx-case-2025.html">
   <meta property="og:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
   <meta property="og:site_name" content="プレゼンテーションアーカイブ">
   
@@ -24,12 +24,12 @@
   <meta name="twitter:image" content="https://geeorgey.github.io/articles/images/dx-case-2025-ogp.jpg">
   
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://geeorgey.github.io/articles/20250522_dx-case-2025.html">
+  <link rel="canonical" href="https://geeorgey.github.io/articles/presentations/20250522_dx-case-2025.html">
   
   <!-- スタイルシート -->
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/dx-case-2025.css">
-  <link rel="stylesheet" href="styles/timeline.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/dx-case-2025.css">
+  <link rel="stylesheet" href="../styles/timeline.css">
   
   <style>
     :root {
@@ -280,7 +280,7 @@
         </div>
         <div class="profile-image">
           <figure>
-            <img src="images/dreamforce-keynote.jpg" alt="Dreamforce 2019 Einstein Keynoteでの登壇の様子">
+            <img src="../images/dreamforce-keynote.jpg" alt="Dreamforce 2019 Einstein Keynoteでの登壇の様子">
             <figcaption>Dreamforce 2019 Einstein Keynote</figcaption>
           </figure>
         </div>
@@ -322,7 +322,7 @@
   </div>
   
   <!-- ロゴ -->
-  <img src="images/leaveanest_logo.png" alt="株式会社リバネスのロゴ" class="logo">
+  <img src="../images/leaveanest_logo.png" alt="株式会社リバネスのロゴ" class="logo">
   
   <!-- JavaScript -->
   <script>
@@ -422,7 +422,7 @@
           
           // GitHub Pages環境ではfetchを使用
           if (window.location.protocol.includes('http')) {
-            const response = await fetch('data/timeline-data.json');
+            const response = await fetch('../data/timeline-data.json');
             const data = await response.json();
             renderTimeline(data);
           } else {
